@@ -1,4 +1,6 @@
 let arr = ["satu", 2, "Tiga", true];
+// length, untuk menghitung total data/elemen/indeks suatu array
+console.log(arr.length);
 
 // join, untuk merubah array menjadi string, dengan penggunaan array.join("optional");
 console.log(arr.join());
