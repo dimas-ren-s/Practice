@@ -1,4 +1,4 @@
-// object, 
+// object, selain menyimpan data dengan key, juga dapat menyimpan sebuah object, array, atau function
 const a = {
     key1: 2024,
     keyOne: 'Dua Ribu Dua Empat',
