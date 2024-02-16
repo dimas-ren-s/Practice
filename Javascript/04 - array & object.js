@@ -2,13 +2,20 @@
 const a = {
     key1: 2024,
     keyOne: 'Dua Ribu Dua Empat',
-    "Key One": 2024
+    "Key One": 2024,
+    keyObject: {
+        keySatu: "satu",
+        keyDua: "dua"
+    }
 }
 
 console.log(a);
 console.log(a.key1);
 console.log(a["Key One"]);
 console.log(`cara mengambil data object ${a.key1} seperti itu`);
+console.log(a.keyObject["keySatu"]);
+console.log(a.keyObject.keyDua);
+console.log(a["keyObject"]["keySatu"]);
 
 // Array, dihitung dari index 0
 const b = [2024, "dua ribu dua empat", 2024];
