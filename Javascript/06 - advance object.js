@@ -65,4 +65,21 @@ function Mahasiswa(nama, umur, skill) {
 
 let tesObjectCreateConstructor = new Mahasiswa("dimas", 23, ["js", "ts", "php"]);
 console.log(tesObjectCreateConstructor)
-console.log(tesObjectCreateConstructor.sayHello())
+console.log(tesObjectCreateConstructor.sayHello());
+
+// CLASS yang dibelakang layar juga dengan prototype function constructor
+class ClassMahasiswa {
+    constructor(nama, umur, skill) {
+        this.nama = nama;
+        this.umur = umur;
+        this.skill = skill;
+    }
+
+    sayHello() {
+        return `Hallo, saya ${this.nama}`;
+    }
+}
+
+let tesClass = new ClassMahasiswa("Dimas", 23, ["js", "ts"]);
+console.log(tesClass);
+console.log(tesClass.sayHello());
