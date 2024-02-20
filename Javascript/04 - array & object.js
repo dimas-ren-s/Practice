@@ -40,10 +40,15 @@ let dObject = [
         key1: 2025,
         keyTwo: 2025,
         "key three": "dua ribu dua lima"
+    },
+    {
+        kunci1: 2025,
+        kunci2: 2024,
+        kunci3: 2026
     }
 ]
 
-// Destructuring object yang belum pernah dideklarasi dengan menggunakan let { key } = namaObject
+// Destructuring object yang belum pernah dideklarasi dengan menggunakan let { keyHarusSamaDenganProperti } = namaObject
 let { key1, keyTwo, "key three": keyThree } = dObject[0];
 console.log(key1, keyTwo, keyThree);
 
@@ -59,6 +64,30 @@ console.log(key1, keyTwo, keyThree);
 // Sebenarnya udah digunakan pada "key three", yakni menamai variable berbeda menggunakan tanda " : "
 ({ key1: keySatu, keyTwo: keyDua, "key three": keyTiga } = dObject[1]);
 console.log(keySatu, keyDua, keyTiga);
+
+// rest param atau spread operator, sisanya akan masuk kedala variable baru berupa object
+let { kunci1, ...sisaKey } = dObject[2];
+console.log(key1, sisaKey);
+
+// destructuring assignment tanpa harus deklarasi object terlebih dahulu, 
+// penggunaan ( { namaProperti1, namaProperti2 } = { namaProperti1: "contoh1", namaProperti2: "contoh2" } );
+({ namaProperti1, namaProperti2 } = { namaProperti1: "contoh1", namaProperti2: "contoh2" });
+console.log(namaProperti1, namaProperti2);
+
+// destructing diatas juga dapat di implementasikan pada function
+// jika sebelumnya parameter function berupa object function(dObject) maka kali ini kita akan memanfaatkan { } untuk 
+// destructuring object
+// jika function object
+function cariKey(dObject) {
+    return dObject.key1;
+}
+console.log(cariKey(dObject[1]));
+
+// jika function destructuring
+function cariKey({ key1 }) { // jangan lupa { namaPropertiHarusSama }
+    return key1;
+}
+console.log(cariKey(dObject[1]));
 
 
 console.log(b);
@@ -78,3 +107,7 @@ console.log(thnSatu);
 // [a,b] = [b,a]
 [year1, yearOne] = [yearOne, year1]
 console.log(year1, yearOne);
+
+// rest param, atau spread operator. dapat menampung banyak data ke dalam 1 array
+let [thn1, ...sisaThn] = b;
+console.log(thn1, sisaThn)
