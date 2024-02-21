@@ -33,3 +33,15 @@ do {
 console.log(f); // output 11, dikarenakan d akan terus ditambah, penjabarannya : 1 + (1 + 2 + 3 + 4)
 
 // ada juga infinite loop, jika kita lupa membuat e++ atau c++ pada while. ////
+
+// Pengulangan For ... in, digunakan untuk melakukan iterate pada object
+let abc = {
+    nama: "dimas",
+    nim: "1908107010040",
+    skill: "Javascript, Typescript, PHP"
+}
+
+for (const num in abc) {
+    console.log(num); // akan mengembalikkan key dari properti
+    console.log(abc[num]); // akan mengembalikkan value dari properti
+}
