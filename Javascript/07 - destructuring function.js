@@ -22,7 +22,7 @@ function calculateObj(a, b) {
 const { add, less, multiply, divide, modulus = "Tidak ada" } = calculateObj(2, 4);
 console.log(add, less, multiply, divide, modulus);
 
-// function dimana parameter berupa object
+// destructuring function dimana parameter berupa object
 const mahasiswa = {
     id: 1908107010040,
     nama: "dimas rendy",
@@ -40,3 +40,10 @@ function cekNilai({ id, nama, nilai: { uts, uas, latihan } }) { // jangan lupa {
 }
 
 console.log(cekNilai(mahasiswa));
+
+// destructuring function dimana parameter berupa array, function for of disini maksudnya looping
+const namaAnime = ["Attack on Titan", "Naruto", "One Piece"];
+// karena hasil namaAnime.entries adalah berupa array -> [[0, "Attack of Titan"], [1, "Naruto"], [2, "One Piece"]] kita bisa destructuring array tersebut untuk setiap perulangan
+for (const [index, nama] of namaAnime.entries()) { // namaArray.entries, disini .entries adalah sebuah method bawaan untuk mencari index
+    console.log(`Anime ${nama} berada pada nomor ${index + 1}`);
+}
