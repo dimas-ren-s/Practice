@@ -1,5 +1,5 @@
 // fetch
-/* const searchButton = document.querySelector('.search-button');
+const searchButton = document.querySelector('.search-button');
 searchButton.addEventListener('click', function () {
     const getInput = document.querySelector('.input-keyword');
     fetch('http://www.omdbapi.com/?apikey=492d9308&s=' + getInput.value)
@@ -32,50 +32,7 @@ searchButton.addEventListener('click', function () {
             const movieContainer = document.querySelector('.movie-container');
             movieContainer.innerHTML = notMovie;
         });
-}); */
-
-// Fetch Refactor
-const searchButton = document.querySelector('.search-button');
-searchButton.addEventListener('click', async function () {
-    const getInput = document.querySelector('.input-keyword');
-    const showMovie = await getMovie(getInput.value);
-    updateShowMovie(showMovie);
 });
-
-// Event Binding -- ketika suatu elemen belum muncul, tetapi tetap bisa dilakukan function nya
-document.addEventListener('click', async function (e) {
-    const detailButton = e.target.classList.contains('modal-detail-button') // mendapatkan input dengan classlist modal-detail-button
-    if (detailButton) {
-        const imdbid = e.target.dataset.imdbid;
-        const showDetail = await getDetail(imdbid);
-        updateShowDetail(showDetail);
-    }
-});
-
-function getDetail(imdbid) {
-    return fetch('http://www.omdbapi.com/?apikey=492d9308&i=' + imdbid)
-        .then(response => response.json())
-        .then(response => response)
-}
-
-function updateShowDetail(movie) {
-    const movieDetails = showMovieDetail(movie);
-    const modalBody = document.querySelector('.modal-body')
-    modalBody.innerHTML = movieDetails;
-}
-
-function getMovie(movies) {
-    return fetch('http://www.omdbapi.com/?apikey=492d9308&s=' + movies)
-        .then(response => response.json())
-        .then(response => response.Search)
-}
-
-function updateShowMovie(movies) {
-    let cards = '';
-    movies.forEach(movie => cards += showCards(movie)); // looping sekaligus mengambil return card
-    const movieContainer = document.querySelector('.movie-container');
-    movieContainer.innerHTML = cards
-}
 
 function showCards(movie) {
     return `
