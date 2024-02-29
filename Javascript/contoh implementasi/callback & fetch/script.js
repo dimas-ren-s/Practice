@@ -1,4 +1,4 @@
-$('.search-button').on('click', function () {
+/* $('.search-button').on('click', function () {
     $.ajax({
         url: 'http://www.omdbapi.com/?apikey=492d9308&s=' + $('.input-keyword').val(),
         success: result => { // callback
@@ -30,43 +30,43 @@ $('.search-button').on('click', function () {
             console.log(e.responseText)
         }
     });
-}); // waspada cllback hell, jadi kita ganti jquery ke fetch. sebaiknya gunakan bawaan js yaitu fetch
+}); // waspada cllback hell, jadi kita ganti jquery ke fetch. sebaiknya gunakan bawaan js yaitu fetch */
 
-// fetch
-// const searchButton = document.querySelector('.search-button');
-// searchButton.addEventListener('click', function () {
-//     const getInput = document.querySelector('.input-keyword');
-//     fetch('http://www.omdbapi.com/?apikey=492d9308&s=' + getInput.value)
-//         .then(response => response.json()) // kita ubah response menjadi json, dimana hasilnya promise
-//         .then(response => { // karna banyak baris, pake kurung kurawal
-//             const movies = response.Search;
-//             let cards = '';
-//             const totalMovies = response.totalResponses;
-//             movies.forEach(movie => cards += showCards(movie)); // looping sekaligus mengambil return card
-//             const movieContainer = document.querySelector('.movie-container');
-//             movieContainer.innerHTML = cards
+fetch
+const searchButton = document.querySelector('.search-button');
+searchButton.addEventListener('click', function () {
+    const getInput = document.querySelector('.input-keyword');
+    fetch('http://www.omdbapi.com/?apikey=492d9308&s=' + getInput.value)
+        .then(response => response.json()) // kita ubah response menjadi json, dimana hasilnya promise
+        .then(response => { // karna banyak baris, pake kurung kurawal
+            const movies = response.Search;
+            let cards = '';
+            const totalMovies = response.totalResponses;
+            movies.forEach(movie => cards += showCards(movie)); // looping sekaligus mengambil return card
+            const movieContainer = document.querySelector('.movie-container');
+            movieContainer.innerHTML = cards
 
-//             const buttonDetail = document.querySelectorAll('.modal-detail-button');
-//             buttonDetail.forEach(btn => {
-//                 btn.addEventListener('click', function () {
-//                     const imdbid = this.dataset.imdbid;
-//                     fetch('http://www.omdbapi.com/?apikey=492d9308&i=' + imdbid)
-//                         .then(response => response.json())
-//                         .then(response => {
-//                             const movieDetails = showMovieDetail(response);
-//                             const modalBody = document.querySelector('.modal-body')
-//                             modalBody.innerHTML = movieDetails;
-//                         })
-//                         .catch(e => console.log(e));
-//                 });
-//             });
-//         }) // kita then lagi untuk mengubah promise hasil response.json sebelumnya
-//         .catch(e => {
-//             let notMovie = `Movie dengan judul ${getInput.value}tidak ditemukan`;
-//             const movieContainer = document.querySelector('.movie-container');
-//             movieContainer.innerHTML = notMovie;
-//         })
-// })
+            const buttonDetail = document.querySelectorAll('.modal-detail-button');
+            buttonDetail.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const imdbid = this.dataset.imdbid;
+                    fetch('http://www.omdbapi.com/?apikey=492d9308&i=' + imdbid)
+                        .then(response => response.json())
+                        .then(response => {
+                            const movieDetails = showMovieDetail(response);
+                            const modalBody = document.querySelector('.modal-body')
+                            modalBody.innerHTML = movieDetails;
+                        })
+                        .catch(e => console.log(e));
+                });
+            });
+        }) // kita then lagi untuk mengubah promise hasil response.json sebelumnya
+        .catch(e => {
+            let notMovie = `Movie dengan judul ${getInput.value}tidak ditemukan`;
+            const movieContainer = document.querySelector('.movie-container');
+            movieContainer.innerHTML = notMovie;
+        });
+});
 
 function showCards(movie) {
     return `
