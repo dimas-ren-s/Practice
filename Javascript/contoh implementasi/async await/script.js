@@ -1,11 +1,11 @@
 // Fetch Refactor dengan async await
 const searchButton = document.querySelector('.search-button');
 searchButton.addEventListener('click', async function () {
-    try {
+    try { // untuk menangkap resolve
         const getInput = document.querySelector('.input-keyword');
         const showMovie = await getMovie(getInput.value);
         updateShowMovie(showMovie);
-    } catch (e) {
+    } catch (e) { // menangkap error dari throw, karna async tidak memiliki catch bawaan untuk reject, kayaknya???
         console.log(e)
     }
 });
@@ -37,7 +37,7 @@ function updateShowMovie(movies) {
 document.addEventListener('click', async function (e) {
     try {
         const detailButton = e.target.classList.contains('modal-detail-button') // mendapatkan input dengan classlist modal-detail-button
-        if (detailButton) {
+        if (detailButton) { // cek apakah diklik, kalau iya
             const imdbid = e.target.dataset.imdbid;
             const showDetail = await getDetail(imdbid);
             updateShowDetail(showDetail);
