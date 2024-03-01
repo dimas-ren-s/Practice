@@ -14,7 +14,7 @@ async function listMovie(name) {
 }
 
 let a = listMovie('Avengers');
-console.log(a);
+a.then(response => console.log(response)) // agar berjalan normal, harus tetap then lagi di a, karna async menghasilkan output berupa promise
 
-// Mungkin hasilnya hanya pending karena menggunakan async function, tapi intinya fetch ini untuk request API
+// intinya fetch ini untuk request API
 // Untuk lebih paham silakhkan cek folder ../contoh implementasi/fetch
