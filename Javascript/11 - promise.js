@@ -67,3 +67,52 @@ console.log('selesai');
         episode: 1002
     }]
 */
+
+// Promise All -> Menjalankan banyak promise sekaligus
+let let1 = true;
+const promise1 = new Promise((resolve, reject) => {
+    if (waktuDitepati) {
+        setTimeout(() => { // harus pake arrow function
+            resolve([{
+                nama: "Naruto",
+                episode: 1002
+            },
+            {
+                nama: "One Piece",
+                episode: 1002
+            }]);
+        }, 3000);
+    } else {
+        setTimeout(() => {
+            reject(`Tidak ada`)
+        }, 500);
+    }
+});
+
+let let2 = true;
+const promise2 = new Promise((resolve, reject) => {
+    if (waktuDitepati) {
+        setTimeout(() => { // harus pake arrow function
+            resolve([{
+                nama: "Bleach",
+                episode: 1002
+            },
+            {
+                nama: "Doraemon",
+                episode: 1002
+            }]);
+        }, 500);
+    } else {
+        setTimeout(() => {
+            reject(`Tidak ada`)
+        }, 500);
+    }
+});
+
+// jika dijalankan sekaligus dengan promise ALL, jadi setTimeOut nya walaupun berbeda tapi output tetap sekaligus dan promise2 tetap setalah promise 1 walau pun promise 1 menunggu 3 detik
+Promise.all([promise1, promise2])
+    .then(res => {
+        const [prom1, prom2] = res; // destructuring array res, karna output res ada 2 array object
+        console.log(prom1);
+        console.log(prom2);
+    })
